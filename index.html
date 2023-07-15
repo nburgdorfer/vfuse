@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="DynIBaR">
+  <meta name="keywords" content="DynIBaR">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DynIBaR</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">DynIBaR <br> Neural Dynamic Image-Based Rendering</h1>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://zhengqili.github.io/">Zhengqi Li</a><sup>1</sup>, </span>
+            <span class="author-block">
+              <a href="https://www.cs.cornell.edu/~qqw/">Qianqian Wang</a><sup>1,2</sup>, </span>
+            </span>
+            <span class="author-block">
+              <a href="https://people.csail.mit.edu/fcole/">Forrester Cole</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://research.google/people/RichardTucker/">Richard Tucker</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://www.cs.cornell.edu/~snavely/">Noah Snavely</a><sup>1</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Google Research &nbsp; </span>
+            <span class="author-block"><sup>2</sup>Cornell Tech, Cornell University &nbsp; </span>
+          </div>
+
+          <h1 style="font-size:24px;font-weight:bold">CVPR 2023 (Best Paper Honorable Mention)</h1>
+          
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+<!--               <span class="link-block">
+                <a href="static/pdfs/dynibar.pdf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span> -->
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2211.11082"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <span class="link-block">
+                <a href="#overview_video"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span>
+              <!-- Supp Link. -->
+              <span class="link-block">
+                <a href="static/pdfs/supp.pdf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Supp</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/google/dynibar"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              <!-- </span> -->
+              <!-- Dataset Link. -->
+              <!-- <span class="link-block">
+                <a href="https://github.com/google/nerfies/releases/tag/0.1"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Data</span>
+                  </a>
+              </span> -->
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <center>
+      <video id="teaser" autoplay muted loop playsinline controls width="99%">
+        <source src="static/videos/new-teaser_3d.mp4" type="video/mp4">
+      </video>
+      </center>
+      <h3 class="subtitle has-text-centered">
+        <font size="-1">
+        <span class="dnerf"> </span> 
+        State-of-the-art monocular dynamic view synthesis methods struggle to render high-quality views from long videos featuring uncontrolled camera paths and complex scene motion. We present a new approach that addresses these limitations, illustrated above via an application to 3D stabilization, where we apply our approach and prior methods to a shaky, 30-second video, and compare novel views rendered along a smoothed camera path. 
+        </font>
+      </h3>
+    </div>
+  </div>
+</section>
+
+
+<section class="hero is-light is-small">
+  <div class="hero-body nopadding">
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item item-fullbody">
+          <video poster="" id="fullbody" autoplay playsinline controls muted loop height="450px" width="auto">
+            <source src="static/videos/parkour-2.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+
+        <div class="item item-fullbody">
+          <video poster="" id="fullbody" autoplay playsinline controls muted loop height="450px" width="auto">
+            <source src="static/videos/mom-spin.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-fullbody">
+          <video poster="" id="fullbody" autoplay playsinline controls muted loop height="450px" width="auto">
+            <source src="static/videos/cat-walk.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+
+        <div class="item item-fullbody">
+          <video poster="" id="fullbody" autoplay playsinline controls muted loop height="450px" width="auto">
+            <source src="static/videos/girl-dog-running.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+
+        <div class="item item-fullbody">
+          <video poster="" id="fullbody" autoplay playsinline controls muted loop height="450px" width="auto">
+            <source src="static/videos/kid-dog.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-fullbody">
+          <video poster="" id="fullbody" autoplay playsinline controls muted loop height="450px" width="auto">
+            <source src="static/videos/swing.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-fullbody">
+          <video poster="" id="fullbody" autoplay playsinline controls muted loop height="450px" width="auto">
+            <source src="static/videos/dog-running.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-fullbody">
+          <video poster="" id="fullbody" autoplay playsinline controls muted loop height="450px" width="auto">
+            <source src="static/videos/train-davis.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-fullbody">
+          <video poster="" id="fullbody" autoplay playsinline controls muted loop height="450px" width="auto">
+            <source src="static/videos/parkour-davis.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+
+        <div class="item item-fullbody">
+          <video poster="" id="fullbody" autoplay playsinline controls muted loop height="450px" width="auto">
+            <source src="static/videos/dancing-fixed-views_768.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-fullbody">
+          <video poster="" id="fullbody" autoplay playsinline controls muted loop height="450px" width="auto">
+            <source src="static/videos/bubble.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-fullbody">
+          <video poster="" id="fullbody" autoplay playsinline controls muted loop height="450px" width="auto">
+            <source src="static/videos/dog-run-3_432p.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="hero is-light is-small">
+  <div class="hero-body nopadding">
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+
+        <div class="item item-fullbody">
+          <video poster="" id="fullbody" autoplay playsinline controls muted loop height="360px">
+            <source src="static/videos/playground-full.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-fullbody">
+          <video poster="" id="fullbody" autoplay playsinline controls muted loop height="360px">
+            <source src="static/videos/balloon1-full.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+
+        <div class="item item-fullbody">
+          <video poster="" id="fullbody" autoplay playsinline controls muted loop height="360px">
+            <source src="static/videos/umbrella_full.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+
+        <div class="item item-fullbody">
+          <video poster="" id="fullbody" autoplay playsinline controls muted loop height="360px">
+            <source src="static/videos/truck-full.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-fullbody">
+          <video poster="" id="fullbody" autoplay playsinline controls muted loop height="360px">
+            <source src="static/videos/balloon2-full.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-fullbody">
+          <video poster="" id="fullbody" autoplay playsinline controls muted loop height="360px">
+            <source src="static/videos/skating-full.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-fullbody">
+          <video poster="" id="fullbody" autoplay playsinline controls muted loop height="360px">
+            <source src="static/videos/dynamicFace-full.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-fullbody">
+          <video poster="" id="fullbody" autoplay playsinline controls muted loop height="360px">
+            <source src="static/videos/scene016.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-fullbody">
+          <video poster="" id="fullbody" autoplay playsinline controls muted loop height="360px">
+            <source src="static/videos/scene16.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-fullbody">
+          <video poster="" id="fullbody" autoplay playsinline controls muted loop height="360px">
+            <source src="static/videos/scene26.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-fullbody">
+          <video poster="" id="fullbody" autoplay playsinline controls muted loop height="360px">
+            <source src="static/videos/scene14.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-fullbody">
+          <video poster="" id="fullbody" autoplay playsinline controls muted loop height="360px">
+            <source src="static/videos/scene003.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-fullbody">
+          <video poster="" id="fullbody" autoplay playsinline controls muted loop height="360px">
+            <source src="static/videos/scene06_spiral.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+          We address the problem of synthesizing novel views from a monocular video depicting a complex dynamic scene. State-of-the-art methods based on temporally varying Neural Radiance Fields (aka dynamic NeRFs) have shown impressive results on this task. However, for long videos with complex object motions and uncontrolled camera trajectories, these methods can produce blurry or inaccurate renderings, hampering their use in real-world applications. Instead of encoding the entire dynamic scene within the weights of MLPs, we present a new approach that addresses these limitations by adopting a volumetric image-based rendering framework that synthesizes new viewpoints by aggregating features from nearby views in a scene-motion-aware manner. Our system retains the advantages of prior methods in its ability to model complex scenes and view-dependent effects, but also enables synthesizing photo-realistic novel views from long videos featuring complex scene dynamics with challenging camera and object motion, where prior methods fail to produce high-quality renderings.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+<!-- <div align="center" style="margin-top:80px;" style="margin-bottom:120px;">
+<img style='height: auto; width: 75%; object-fit: contain' src="static/images/overview.png" alt="overview_image">
+</div>  -->
+
+    <!-- Paper video. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Video</h2>
+        <div class="publication-video">
+          <a id="overview_video"></a>
+          <iframe src="https://youtube.com/embed/SCFfqYBGXt0" frameborder="0" allow="encrypted-media" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+    
+    <!--/ Paper video. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h3 class="title is-3">Acknowledgements</h3>
+        <div class="content has-text-justified">
+          <p>
+            Thanks to Andrew Liu, Richard Bowen and Lucy Chai for the fruitful discussions, and thanks to Richard Szeliski and Ricardo Martin-Brualla for their helpful proofreading.
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+ <br>
+<!-- 
+<section>
+  <div class="columns is-centered has-text-centered">
+    <h2 class="title is-3"> More Results</h2>
+</div>
+<br>
+
+<div id="wrapper" style="text-align:center;"> 
+    <video autoplay controls muted loop playsinline id="result_video_side" height="450px" width="auto" width="auto" > 
+        <source type="video/mp4" src="static/videos/2558_side-0-1.mp4" /> 
+    </video>
+
+    <video autoplay controls muted loop playsinline id="result_video_side"> 
+        <source type="video/mp4" src="static/videos/000654_side-0-1.mp4" /> 
+    </video>
+    <video  autoplay controls muted loop playsinline id="result_video_side"> 
+        <source type="video/mp4" src="static/videos/000242_side-0-1.mp4" /> 
+    </video>
+
+    <div class="clear"></div>
+Tracking camera motion (horizontal) 
+</div>
+
+<br>
+
+<div id="wrapper" style="text-align:center;  padding: 2em 0;"> 
+    <video  autoplay controls muted loop playsinline id="result_video_updown"> 
+        <source type="video/mp4" src="static/videos/000679_up-down-0-1.mp4" /> 
+    </video>
+
+    <video autoplay controls muted loop playsinline id="result_video_updown"> 
+        <source type="video/mp4" src="static/videos/5428_up-down-0-1.mp4" /> 
+    </video>
+
+    <video  autoplay controls muted loop playsinline id="result_video_updown"> 
+        <source type="video/mp4" src="static/videos/000350_up-down-0-1.mp4" /> 
+    </video>
+
+    <div class="clear"></div> 
+
+Tracking camera motion (vertical) 
+</div>
+
+<br>
+
+<div id="wrapper" style="text-align:center;"> 
+    <video  autoplay controls muted loop playsinline id="result_video_zooming"> 
+        <source type="video/mp4" src="static/videos/zoom-in_000204-0-1.mp4" /> 
+    </video>
+
+    <video autoplay controls muted loop playsinline id="result_video_zooming"> 
+        <source type="video/mp4" src="static/videos/zoom-in_0161-0-1.mp4" /> 
+    </video>
+
+    <video  autoplay controls muted loop playsinline id="result_video_zooming"> 
+        <source type="video/mp4" src="static/videos/zoom-in_000304-0-1.mp4" /> 
+    </video>
+
+    <div class="clear"></div> 
+
+Zooming-In camera motion 
+</div>
+</section>
+
+<br>
+<br>
+
+<section>
+    <div class="columns is-centered has-text-centered">
+      <h2 class="title is-3"> Failure Cases</h2>
+    </div>
+<br>
+    <div id="wrapper" style="text-align:center;"> 
+    <video  autoplay controls muted loop playsinline id="failure_video"> 
+        <source type="video/mp4" src="static/videos/failure1.mp4" /> 
+    </video>
+&nbsp;&nbsp;
+    <video  autoplay controls muted loop playsinline id="failure_video"> 
+        <source type="video/mp4" src="static/videos/failure2.mp4" /> 
+    </video>
+
+    <div class="clear"></div> 
+Our method cannot handle motions that are too large/challenging, and doesn't work well with incorrectly estimated monocular depths.
+
+</div>
+</section> -->
+
+
+<!-- 
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>
+@{li2022_infinite_nature_zero,
+  title     = {DynIBaR: Learning Perpetual View Generation of Natural Scenes from Single Images},
+  author    = {Li, Zhengqi and Wang, Qianqian and Snavely, Noah and Kanazawa, Angjoo},
+  year      = {2022}
+}</code></pre>
+  </div>
+</section> -->
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>
+@inproceedings{li2023dynibar,
+  title         = {DynIBaR: Neural Dynamic Image-Based Rendering},
+  author        = {Li, Zhengqi and Wang, Qianqian and Cole, Forrester and Tucker, Richard and Snavely, Noah},
+  booktitle     = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+  year          = {2023},
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div align="center" class="container">
+    <div class="columns is-centered">
+        <div class="content">
+            This website is borrowed from <a href="https://github.com/3d-moments/3d-moments.github.io">3D Moments</a>.
+        </div>
+      </div>
+    </div>
+</footer>
+
+</body>
+</html>
